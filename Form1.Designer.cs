@@ -33,6 +33,7 @@ namespace CRUD_Basico
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.tsbNovo = new System.Windows.Forms.ToolStripButton();
             this.tsbSalvar = new System.Windows.Forms.ToolStripButton();
+            this.ts_Editar = new System.Windows.Forms.ToolStripButton();
             this.tsbCancelar = new System.Windows.Forms.ToolStripButton();
             this.tsbExcluir = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
@@ -71,7 +72,6 @@ namespace CRUD_Basico
             this.uf = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.telefone = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.email = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ts_Editar = new System.Windows.Forms.ToolStripButton();
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.lista)).BeginInit();
             this.SuspendLayout();
@@ -93,7 +93,7 @@ namespace CRUD_Basico
             this.CriarTabela});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(855, 27);
+            this.toolStrip1.Size = new System.Drawing.Size(855, 31);
             this.toolStrip1.TabIndex = 0;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -103,7 +103,7 @@ namespace CRUD_Basico
             this.tsbNovo.Image = ((System.Drawing.Image)(resources.GetObject("tsbNovo.Image")));
             this.tsbNovo.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbNovo.Name = "tsbNovo";
-            this.tsbNovo.Size = new System.Drawing.Size(29, 24);
+            this.tsbNovo.Size = new System.Drawing.Size(29, 28);
             this.tsbNovo.Text = "Novo";
             this.tsbNovo.Click += new System.EventHandler(this.tsbNovo_Click);
             // 
@@ -113,9 +113,19 @@ namespace CRUD_Basico
             this.tsbSalvar.Image = ((System.Drawing.Image)(resources.GetObject("tsbSalvar.Image")));
             this.tsbSalvar.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbSalvar.Name = "tsbSalvar";
-            this.tsbSalvar.Size = new System.Drawing.Size(29, 24);
+            this.tsbSalvar.Size = new System.Drawing.Size(29, 28);
             this.tsbSalvar.Text = "Salvar";
             this.tsbSalvar.Click += new System.EventHandler(this.tsbSalvar_Click);
+            // 
+            // ts_Editar
+            // 
+            this.ts_Editar.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.ts_Editar.Image = ((System.Drawing.Image)(resources.GetObject("ts_Editar.Image")));
+            this.ts_Editar.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.ts_Editar.Name = "ts_Editar";
+            this.ts_Editar.Size = new System.Drawing.Size(29, 28);
+            this.ts_Editar.Text = "Editar";
+            this.ts_Editar.Click += new System.EventHandler(this.ts_Editar_Click);
             // 
             // tsbCancelar
             // 
@@ -123,7 +133,7 @@ namespace CRUD_Basico
             this.tsbCancelar.Image = ((System.Drawing.Image)(resources.GetObject("tsbCancelar.Image")));
             this.tsbCancelar.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbCancelar.Name = "tsbCancelar";
-            this.tsbCancelar.Size = new System.Drawing.Size(29, 24);
+            this.tsbCancelar.Size = new System.Drawing.Size(29, 28);
             this.tsbCancelar.Text = "Cancelar";
             this.tsbCancelar.Click += new System.EventHandler(this.tsbCancelar_Click);
             // 
@@ -133,14 +143,14 @@ namespace CRUD_Basico
             this.tsbExcluir.Image = ((System.Drawing.Image)(resources.GetObject("tsbExcluir.Image")));
             this.tsbExcluir.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbExcluir.Name = "tsbExcluir";
-            this.tsbExcluir.Size = new System.Drawing.Size(29, 24);
+            this.tsbExcluir.Size = new System.Drawing.Size(29, 28);
             this.tsbExcluir.Text = "Excluir";
             this.tsbExcluir.Click += new System.EventHandler(this.tsbExcluir_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 27);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 31);
             // 
             // tsbBuscaPorId
             // 
@@ -148,7 +158,7 @@ namespace CRUD_Basico
             this.tsbBuscaPorId.Image = ((System.Drawing.Image)(resources.GetObject("tsbBuscaPorId.Image")));
             this.tsbBuscaPorId.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbBuscaPorId.Name = "tsbBuscaPorId";
-            this.tsbBuscaPorId.Size = new System.Drawing.Size(29, 24);
+            this.tsbBuscaPorId.Size = new System.Drawing.Size(29, 28);
             this.tsbBuscaPorId.Text = "Buscar Id";
             this.tsbBuscaPorId.Click += new System.EventHandler(this.tsbBuscaPorId_Click);
             // 
@@ -156,7 +166,7 @@ namespace CRUD_Basico
             // 
             this.tst_Id.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.tst_Id.Name = "tst_Id";
-            this.tst_Id.Size = new System.Drawing.Size(100, 27);
+            this.tst_Id.Size = new System.Drawing.Size(100, 31);
             // 
             // tsbBuscar
             // 
@@ -164,7 +174,7 @@ namespace CRUD_Basico
             this.tsbBuscar.Image = ((System.Drawing.Image)(resources.GetObject("tsbBuscar.Image")));
             this.tsbBuscar.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbBuscar.Name = "tsbBuscar";
-            this.tsbBuscar.Size = new System.Drawing.Size(29, 24);
+            this.tsbBuscar.Size = new System.Drawing.Size(29, 28);
             this.tsbBuscar.Text = "Buscar";
             this.tsbBuscar.Click += new System.EventHandler(this.tsbBuscar_Click);
             // 
@@ -174,7 +184,7 @@ namespace CRUD_Basico
             this.tsb_Manutencao.Image = ((System.Drawing.Image)(resources.GetObject("tsb_Manutencao.Image")));
             this.tsb_Manutencao.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsb_Manutencao.Name = "tsb_Manutencao";
-            this.tsb_Manutencao.Size = new System.Drawing.Size(29, 24);
+            this.tsb_Manutencao.Size = new System.Drawing.Size(29, 28);
             this.tsb_Manutencao.Text = "Manutenção";
             this.tsb_Manutencao.Click += new System.EventHandler(this.tsb_Manutencao_Click);
             // 
@@ -184,7 +194,7 @@ namespace CRUD_Basico
             this.CriarTabela.Image = ((System.Drawing.Image)(resources.GetObject("CriarTabela.Image")));
             this.CriarTabela.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.CriarTabela.Name = "CriarTabela";
-            this.CriarTabela.Size = new System.Drawing.Size(29, 24);
+            this.CriarTabela.Size = new System.Drawing.Size(29, 28);
             this.CriarTabela.Text = "Criar Tabela";
             this.CriarTabela.Click += new System.EventHandler(this.CriarTabela_Click);
             // 
@@ -422,6 +432,7 @@ namespace CRUD_Basico
             this.cep.MinimumWidth = 6;
             this.cep.Name = "cep";
             this.cep.ReadOnly = true;
+            this.cep.Width = 125;
             // 
             // bairro
             // 
@@ -437,6 +448,7 @@ namespace CRUD_Basico
             this.cidade.MinimumWidth = 6;
             this.cidade.Name = "cidade";
             this.cidade.ReadOnly = true;
+            this.cidade.Width = 125;
             // 
             // uf
             // 
@@ -452,6 +464,7 @@ namespace CRUD_Basico
             this.telefone.MinimumWidth = 6;
             this.telefone.Name = "telefone";
             this.telefone.ReadOnly = true;
+            this.telefone.Width = 125;
             // 
             // email
             // 
@@ -460,16 +473,6 @@ namespace CRUD_Basico
             this.email.Name = "email";
             this.email.ReadOnly = true;
             this.email.Width = 200;
-            // 
-            // ts_Editar
-            // 
-            this.ts_Editar.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.ts_Editar.Image = ((System.Drawing.Image)(resources.GetObject("ts_Editar.Image")));
-            this.ts_Editar.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.ts_Editar.Name = "ts_Editar";
-            this.ts_Editar.Size = new System.Drawing.Size(29, 24);
-            this.ts_Editar.Text = "Editar";
-            this.ts_Editar.Click += new System.EventHandler(this.ts_Editar_Click);
             // 
             // Form1
             // 
