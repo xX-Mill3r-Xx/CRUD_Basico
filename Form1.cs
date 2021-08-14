@@ -39,9 +39,10 @@ namespace CRUD_Basico
             
             txtId.Enabled = false;
             tsbNovo.Enabled = true;
+            ts_Editar.Enabled = false;
             tsbSalvar.Enabled = false;
             tsbCancelar.Enabled = false;
-            tsbExcluir.Enabled = true;
+            tsbExcluir.Enabled = false;
             tst_Id.Enabled = false;
             tsbBuscar.Enabled = false;
             txtNome.Enabled = false;
@@ -102,10 +103,11 @@ namespace CRUD_Basico
             txt_Email.Clear();
             lista.Rows.Clear();
             tsbNovo.Enabled = false;
+            ts_Editar.Enabled = true;
             txtId.Enabled = true;
             tsbSalvar.Enabled = true;
             tsbCancelar.Enabled = true;
-            tsbExcluir.Enabled = false;
+            tsbExcluir.Enabled = true;
             tst_Id.Enabled = false;
             tsbBuscar.Enabled = false;
             txtNome.Enabled = true;
@@ -336,7 +338,7 @@ namespace CRUD_Basico
                 string query = "UPDATE cliente SET nome = '" + nome + "', endereco = '" + endereco + "', cep = '" + cep + "', bairro = '" + bairro + "', cidade = '" + cidade + "', uf = '" + uf + "', telefone = '" + telefone + "', email = '" + email + "' WHERE id LIKE '" + id + "'";
                 comando.CommandText = query;
                 comando.ExecuteNonQuery();
-                //txtId.Clear();
+                txtId.Clear();
                 txtNome.Clear();
                 txtEndereco.Clear();
                 txtBairro.Clear();
@@ -362,6 +364,7 @@ namespace CRUD_Basico
 
         private void lista_SelectionChanged(object sender, EventArgs e)
         {
+            txtNome.Enabled = true;
             txtEndereco.Enabled = true;
             mskCep.Enabled = true;
             txtBairro.Enabled = true;
@@ -369,6 +372,7 @@ namespace CRUD_Basico
             txt_Uf.Enabled = true;
             mskTelefone.Enabled = true;
             txt_Email.Enabled = true;
+            ts_Editar.Enabled = true;
             txtId.Text = lista.SelectedRows[0].Cells[0].Value.ToString();
             txtNome.Text = lista.SelectedRows[0].Cells[1].Value.ToString();
             txtEndereco.Text = lista.SelectedRows[0].Cells[2].Value.ToString();
@@ -378,6 +382,11 @@ namespace CRUD_Basico
             txt_Uf.Text = lista.SelectedRows[0].Cells[6].Value.ToString();
             mskTelefone.Text = lista.SelectedRows[0].Cells[7].Value.ToString();
             txt_Email.Text = lista.SelectedRows[0].Cells[8].Value.ToString();
+        }
+
+        private void toolStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+
         }
     }
 }
