@@ -41,7 +41,7 @@ namespace CRUD_Basico
             tsbNovo.Enabled = true;
             tsbSalvar.Enabled = false;
             tsbCancelar.Enabled = false;
-            tsbExcluir.Enabled = false;
+            tsbExcluir.Enabled = true;
             tst_Id.Enabled = false;
             tsbBuscar.Enabled = false;
             txtNome.Enabled = false;
@@ -91,7 +91,16 @@ namespace CRUD_Basico
         private void tsbNovo_Click(object sender, EventArgs e)
         {
             // passa os campos pra true;
-
+            txtId.Clear();
+            txtNome.Clear();
+            txtEndereco.Clear();
+            txtBairro.Clear();
+            mskCep.Clear();
+            txtCidade.Clear();
+            txt_Uf.Clear();
+            mskTelefone.Clear();
+            txt_Email.Clear();
+            lista.Rows.Clear();
             tsbNovo.Enabled = false;
             txtId.Enabled = true;
             tsbSalvar.Enabled = true;
@@ -223,9 +232,12 @@ namespace CRUD_Basico
                 conexao.Open();
                 SqlCeCommand comando = new SqlCeCommand();
                 comando.Connection = conexao;
-                int id = int.Parse(txtId.Text);
+                int id = int.Parse(tst_Id.Text);
                 comando.CommandText = "DELETE FROM cliente WHERE id = '" + id + "'";
                 comando.ExecuteNonQuery();
+                lb_Status.ForeColor = Color.Green;
+                lb_Status.Text = "Registro excluido da base de dados";
+                tst_Id.Clear();
             }
             catch(Exception ex)
             {
@@ -240,7 +252,7 @@ namespace CRUD_Basico
             tsbNovo.Enabled = true;
             tsbSalvar.Enabled = false;
             tsbCancelar.Enabled = false;
-            tsbExcluir.Enabled = false;
+            tsbExcluir.Enabled = true;
             tst_Id.Enabled = true;
             tsbBuscar.Enabled = true;
             txtNome.Enabled = false;
@@ -301,6 +313,71 @@ namespace CRUD_Basico
             {
                 conexao.Close();
             }
+        }
+
+        private void ts_Editar_Click(object sender, EventArgs e)
+        {
+            string bancoDados = Application.StartupPath + @"\db\banco.sdf";
+            string strConection = @"DataSource = " + bancoDados + "; Password = '1234'";
+            SqlCeConnection conexao = new SqlCeConnection(strConection);
+            try
+            {
+                conexao.Open();SqlCeCommand comando = new SqlCeCommand();
+                comando.Connection = conexao;
+                string id = txtId.Text;
+                string nome = txtNome.Text;
+                string endereco = txtEndereco.Text;
+                string cep = mskCep.Text;
+                string bairro = txtBairro.Text;
+                string cidade = txtCidade.Text;
+                string uf = txt_Uf.Text;
+                string telefone = mskTelefone.Text;
+                string email = txt_Email.Text;
+                string query = "UPDATE cliente SET nome = '" + nome + "', endereco = '" + endereco + "', cep = '" + cep + "', bairro = '" + bairro + "', cidade = '" + cidade + "', uf = '" + uf + "', telefone = '" + telefone + "', email = '" + email + "' WHERE id LIKE '" + id + "'";
+                comando.CommandText = query;
+                comando.ExecuteNonQuery();
+                //txtId.Clear();
+                txtNome.Clear();
+                txtEndereco.Clear();
+                txtBairro.Clear();
+                mskCep.Clear();
+                txtCidade.Clear();
+                txt_Uf.Clear();
+                mskTelefone.Clear();
+                txt_Email.Clear();
+                //lista.Rows.Clear();
+                lb_Status.ForeColor = Color.Green;
+                lb_Status.Text = "Registro editado na base de dados do sistema";
+            }
+            catch (Exception ex)
+            {
+                lb_Status.ForeColor = Color.Red;
+                lb_Status.Text = "Falha na execução" + ex.Message;
+            }
+            finally
+            {
+                conexao.Close();
+            }
+        }
+
+        private void lista_SelectionChanged(object sender, EventArgs e)
+        {
+            txtEndereco.Enabled = true;
+            mskCep.Enabled = true;
+            txtBairro.Enabled = true;
+            txtCidade.Enabled = true;
+            txt_Uf.Enabled = true;
+            mskTelefone.Enabled = true;
+            txt_Email.Enabled = true;
+            txtId.Text = lista.SelectedRows[0].Cells[0].Value.ToString();
+            txtNome.Text = lista.SelectedRows[0].Cells[1].Value.ToString();
+            txtEndereco.Text = lista.SelectedRows[0].Cells[2].Value.ToString();
+            mskCep.Text = lista.SelectedRows[0].Cells[3].Value.ToString();
+            txtBairro.Text = lista.SelectedRows[0].Cells[4].Value.ToString();
+            txtCidade.Text = lista.SelectedRows[0].Cells[5].Value.ToString();
+            txt_Uf.Text = lista.SelectedRows[0].Cells[6].Value.ToString();
+            mskTelefone.Text = lista.SelectedRows[0].Cells[7].Value.ToString();
+            txt_Email.Text = lista.SelectedRows[0].Cells[8].Value.ToString();
         }
     }
 }

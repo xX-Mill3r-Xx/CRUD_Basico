@@ -71,6 +71,7 @@ namespace CRUD_Basico
             this.uf = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.telefone = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.email = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ts_Editar = new System.Windows.Forms.ToolStripButton();
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.lista)).BeginInit();
             this.SuspendLayout();
@@ -81,6 +82,7 @@ namespace CRUD_Basico
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsbNovo,
             this.tsbSalvar,
+            this.ts_Editar,
             this.tsbCancelar,
             this.tsbExcluir,
             this.toolStripSeparator1,
@@ -385,8 +387,10 @@ namespace CRUD_Basico
             this.lista.ReadOnly = true;
             this.lista.RowHeadersWidth = 51;
             this.lista.RowTemplate.Height = 24;
+            this.lista.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.lista.Size = new System.Drawing.Size(830, 232);
             this.lista.TabIndex = 21;
+            this.lista.SelectionChanged += new System.EventHandler(this.lista_SelectionChanged);
             // 
             // id
             // 
@@ -456,6 +460,16 @@ namespace CRUD_Basico
             this.email.Name = "email";
             this.email.ReadOnly = true;
             this.email.Width = 200;
+            // 
+            // ts_Editar
+            // 
+            this.ts_Editar.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.ts_Editar.Image = ((System.Drawing.Image)(resources.GetObject("ts_Editar.Image")));
+            this.ts_Editar.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.ts_Editar.Name = "ts_Editar";
+            this.ts_Editar.Size = new System.Drawing.Size(29, 24);
+            this.ts_Editar.Text = "Editar";
+            this.ts_Editar.Click += new System.EventHandler(this.ts_Editar_Click);
             // 
             // Form1
             // 
@@ -543,6 +557,7 @@ namespace CRUD_Basico
         private System.Windows.Forms.DataGridViewTextBoxColumn uf;
         private System.Windows.Forms.DataGridViewTextBoxColumn telefone;
         private System.Windows.Forms.DataGridViewTextBoxColumn email;
+        private System.Windows.Forms.ToolStripButton ts_Editar;
     }
 }
 
