@@ -39,6 +39,8 @@ namespace CRUD_Basico
             this.tsbBuscaPorId = new System.Windows.Forms.ToolStripButton();
             this.tst_Id = new System.Windows.Forms.ToolStripTextBox();
             this.tsbBuscar = new System.Windows.Forms.ToolStripButton();
+            this.tsb_Manutencao = new System.Windows.Forms.ToolStripButton();
+            this.CriarTabela = new System.Windows.Forms.ToolStripButton();
             this.txtId = new System.Windows.Forms.TextBox();
             this.txtNome = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -59,9 +61,18 @@ namespace CRUD_Basico
             this.labelEmail = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.lb_Status = new System.Windows.Forms.Label();
-            this.tsb_Manutencao = new System.Windows.Forms.ToolStripButton();
-            this.CriarTabela = new System.Windows.Forms.ToolStripButton();
+            this.lista = new System.Windows.Forms.DataGridView();
+            this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nome = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.endereco = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cep = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.bairro = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cidade = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.uf = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.telefone = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.email = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.toolStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.lista)).BeginInit();
             this.SuspendLayout();
             // 
             // toolStrip1
@@ -153,11 +164,33 @@ namespace CRUD_Basico
             this.tsbBuscar.Name = "tsbBuscar";
             this.tsbBuscar.Size = new System.Drawing.Size(29, 24);
             this.tsbBuscar.Text = "Buscar";
+            this.tsbBuscar.Click += new System.EventHandler(this.tsbBuscar_Click);
+            // 
+            // tsb_Manutencao
+            // 
+            this.tsb_Manutencao.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsb_Manutencao.Image = ((System.Drawing.Image)(resources.GetObject("tsb_Manutencao.Image")));
+            this.tsb_Manutencao.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsb_Manutencao.Name = "tsb_Manutencao";
+            this.tsb_Manutencao.Size = new System.Drawing.Size(29, 24);
+            this.tsb_Manutencao.Text = "Manutenção";
+            this.tsb_Manutencao.Click += new System.EventHandler(this.tsb_Manutencao_Click);
+            // 
+            // CriarTabela
+            // 
+            this.CriarTabela.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.CriarTabela.Image = ((System.Drawing.Image)(resources.GetObject("CriarTabela.Image")));
+            this.CriarTabela.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.CriarTabela.Name = "CriarTabela";
+            this.CriarTabela.Size = new System.Drawing.Size(29, 24);
+            this.CriarTabela.Text = "Criar Tabela";
+            this.CriarTabela.Click += new System.EventHandler(this.CriarTabela_Click);
             // 
             // txtId
             // 
             this.txtId.Location = new System.Drawing.Point(12, 55);
             this.txtId.Name = "txtId";
+            this.txtId.ReadOnly = true;
             this.txtId.Size = new System.Drawing.Size(82, 30);
             this.txtId.TabIndex = 1;
             // 
@@ -316,7 +349,7 @@ namespace CRUD_Basico
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(14, 406);
+            this.label9.Location = new System.Drawing.Point(9, 583);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(52, 17);
             this.label9.TabIndex = 19;
@@ -326,37 +359,110 @@ namespace CRUD_Basico
             // 
             this.lb_Status.AutoSize = true;
             this.lb_Status.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lb_Status.Location = new System.Drawing.Point(94, 406);
+            this.lb_Status.Location = new System.Drawing.Point(89, 583);
             this.lb_Status.Name = "lb_Status";
             this.lb_Status.Size = new System.Drawing.Size(33, 17);
             this.lb_Status.TabIndex = 20;
             this.lb_Status.Text = "-----";
             // 
-            // tsb_Manutencao
+            // lista
             // 
-            this.tsb_Manutencao.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tsb_Manutencao.Image = ((System.Drawing.Image)(resources.GetObject("tsb_Manutencao.Image")));
-            this.tsb_Manutencao.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsb_Manutencao.Name = "tsb_Manutencao";
-            this.tsb_Manutencao.Size = new System.Drawing.Size(29, 24);
-            this.tsb_Manutencao.Text = "Manutenção";
-            this.tsb_Manutencao.Click += new System.EventHandler(this.tsb_Manutencao_Click);
+            this.lista.AllowUserToAddRows = false;
+            this.lista.AllowUserToDeleteRows = false;
+            this.lista.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.lista.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.id,
+            this.nome,
+            this.endereco,
+            this.cep,
+            this.bairro,
+            this.cidade,
+            this.uf,
+            this.telefone,
+            this.email});
+            this.lista.Location = new System.Drawing.Point(13, 348);
+            this.lista.Name = "lista";
+            this.lista.ReadOnly = true;
+            this.lista.RowHeadersWidth = 51;
+            this.lista.RowTemplate.Height = 24;
+            this.lista.Size = new System.Drawing.Size(830, 232);
+            this.lista.TabIndex = 21;
             // 
-            // CriarTabela
+            // id
             // 
-            this.CriarTabela.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.CriarTabela.Image = ((System.Drawing.Image)(resources.GetObject("CriarTabela.Image")));
-            this.CriarTabela.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.CriarTabela.Name = "CriarTabela";
-            this.CriarTabela.Size = new System.Drawing.Size(29, 24);
-            this.CriarTabela.Text = "Criar Tabela";
-            this.CriarTabela.Click += new System.EventHandler(this.CriarTabela_Click);
+            this.id.HeaderText = "ID";
+            this.id.MinimumWidth = 6;
+            this.id.Name = "id";
+            this.id.ReadOnly = true;
+            this.id.Width = 60;
+            // 
+            // nome
+            // 
+            this.nome.HeaderText = "NOME";
+            this.nome.MinimumWidth = 6;
+            this.nome.Name = "nome";
+            this.nome.ReadOnly = true;
+            this.nome.Width = 125;
+            // 
+            // endereco
+            // 
+            this.endereco.HeaderText = "ENDEREÇO";
+            this.endereco.MinimumWidth = 6;
+            this.endereco.Name = "endereco";
+            this.endereco.ReadOnly = true;
+            this.endereco.Width = 200;
+            // 
+            // cep
+            // 
+            this.cep.HeaderText = "CEP";
+            this.cep.MinimumWidth = 6;
+            this.cep.Name = "cep";
+            this.cep.ReadOnly = true;
+            // 
+            // bairro
+            // 
+            this.bairro.HeaderText = "BAIRRO";
+            this.bairro.MinimumWidth = 6;
+            this.bairro.Name = "bairro";
+            this.bairro.ReadOnly = true;
+            this.bairro.Width = 200;
+            // 
+            // cidade
+            // 
+            this.cidade.HeaderText = "CIDADE";
+            this.cidade.MinimumWidth = 6;
+            this.cidade.Name = "cidade";
+            this.cidade.ReadOnly = true;
+            // 
+            // uf
+            // 
+            this.uf.HeaderText = "UF";
+            this.uf.MinimumWidth = 6;
+            this.uf.Name = "uf";
+            this.uf.ReadOnly = true;
+            this.uf.Width = 60;
+            // 
+            // telefone
+            // 
+            this.telefone.HeaderText = "TELEFONE";
+            this.telefone.MinimumWidth = 6;
+            this.telefone.Name = "telefone";
+            this.telefone.ReadOnly = true;
+            // 
+            // email
+            // 
+            this.email.HeaderText = "E-MAIL";
+            this.email.MinimumWidth = 6;
+            this.email.Name = "email";
+            this.email.ReadOnly = true;
+            this.email.Width = 200;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(855, 432);
+            this.ClientSize = new System.Drawing.Size(855, 609);
+            this.Controls.Add(this.lista);
             this.Controls.Add(this.lb_Status);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.labelEmail);
@@ -388,6 +494,7 @@ namespace CRUD_Basico
             this.Load += new System.EventHandler(this.Form1_Load);
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.lista)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -426,6 +533,16 @@ namespace CRUD_Basico
         private System.Windows.Forms.Label lb_Status;
         private System.Windows.Forms.ToolStripButton tsb_Manutencao;
         private System.Windows.Forms.ToolStripButton CriarTabela;
+        private System.Windows.Forms.DataGridView lista;
+        private System.Windows.Forms.DataGridViewTextBoxColumn id;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nome;
+        private System.Windows.Forms.DataGridViewTextBoxColumn endereco;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cep;
+        private System.Windows.Forms.DataGridViewTextBoxColumn bairro;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cidade;
+        private System.Windows.Forms.DataGridViewTextBoxColumn uf;
+        private System.Windows.Forms.DataGridViewTextBoxColumn telefone;
+        private System.Windows.Forms.DataGridViewTextBoxColumn email;
     }
 }
 
